@@ -20,7 +20,7 @@ export class HomePage {
     // Menambahkan TileLayer untuk OpenStreetMap
     this.osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(this.map); // Menambahkan ke peta
+    }).addTo(this.map);
 
     // Menambahkan TileLayer untuk Satelit
     this.satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -53,6 +53,15 @@ export class HomePage {
       })
     }).addTo(this.map);
 
-    marker.bindPopup('Universitas Gadjah Mada').openPopup();
+    // Menyisipkan gambar ke dalam popup
+    const popupContent = `
+      <div>
+        <h3>Universitas Gadjah Mada</h3>
+        <img src="	https://ugm.ac.id/wp-content/uploads/2022/02/2102221645425140441410102.jpg" alt="Universitas Gadjah Mada" style="width: 100%; height: auto;" />
+        <p> Universitas Gadjah Mada merupakan salah satu universitas terbaik di Indonesia.</p>
+      </div>
+    `;
+
+    marker.bindPopup(popupContent).openPopup();
   }
 }
